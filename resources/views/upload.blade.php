@@ -87,6 +87,7 @@
         <div class="col-lg-12 text-center">
             <small class="form-text text-muted">If you would like to donate, I accept cryptocurrencies</small>
             <small class="form-text text-muted">Ethereum - 0x01b45ce8192450d5bfbe618bb4fbf11da49abd9c</small>
+            <small class="form-text text-muted">XRB/Nano - xrb_18suehpm997rbu7ahoepew8xtrys38n9xrke193y8zwfnyi79xojz3pzxuk3</small>
        </div>
     </nav>
 @endsection
