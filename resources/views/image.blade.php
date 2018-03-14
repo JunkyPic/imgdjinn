@@ -25,7 +25,7 @@
     @endif
 
     <div class="col-lg-12 text-center" style="padding: 20px 0 20px 0;">
-        <a target="_blank" rel="noopener noreferrer" href="{{  url('/img/' . $image->path) }}"><img
+        <a target="_blank" rel="noopener" href="{{  url('/img/' . $image->path) }}"><img
                     class="img-responsive rounded img-a" src="{{  url('/img/' . $image->path) }}"></a>
     </div>
 @endsection
