@@ -70,7 +70,7 @@ class ImageController extends Controller
         if ($request->request->has('password') && null !== $request->request->get('password')) {
             $image = Image::where(['alias' => $alias])->first();
 
-            if (password_verify($request->request->get('password'), $image->password)) {
+            if (\Hash::check($request->request->get('password'), $image->password)) {
 
                 if (\File::exists(public_path('img/'.$image->path))) {
                     \File::delete(public_path('img/'.$image->path));

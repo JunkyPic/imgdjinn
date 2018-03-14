@@ -80,7 +80,7 @@ class AlbumController extends Controller
         if ($request->request->has('password') && null !== $request->request->get('password')) {
             $album = Album::where(['alias' => $alias])->first();
 
-            if (password_verify($request->request->get('password'), $album->password)) {
+            if (\Hash::check($request->request->get('password'), $album->password)) {
 
                 foreach ($album->images()->get() as $image) {
                     if (\File::exists(public_path('img/'.$image->path))) {

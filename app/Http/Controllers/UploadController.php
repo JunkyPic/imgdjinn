@@ -51,7 +51,7 @@ class UploadController extends Controller
             $album = Album::create(
                 [
                     'alias'         => $albumAlias,
-                    'password'      => isset($albumPassword) ? password_hash(
+                    'password'      => isset($albumPassword) ? \Hash::make(
                         $albumPassword,
                         PASSWORD_DEFAULT
                     ) : null,
@@ -82,7 +82,7 @@ class UploadController extends Controller
                     [
                         'path'          => $imageName,
                         'alias'         => $imageAlias,
-                        'password'      => isset($albumPassword) ? password_hash(
+                        'password'      => isset($albumPassword) ? \Hash::make(
                             $albumPassword,
                             PASSWORD_DEFAULT
                         ) : null,
@@ -133,7 +133,7 @@ class UploadController extends Controller
                 [
                     'path'          => $imageName,
                     'alias'         => $imageAlias,
-                    'password'      => isset($imagePassword) ? password_hash(
+                    'password'      => isset($imagePassword) ? \Hash::make(
                         $imagePassword,
                         PASSWORD_DEFAULT
                     ) : null,
