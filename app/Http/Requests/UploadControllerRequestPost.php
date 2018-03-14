@@ -39,8 +39,8 @@ class UploadControllerRequestPost extends FormRequest
     public function messages() {
         return [
             'img.required' => 'At least one image must be uploaded',
-            'img.mimes' => 'The image must be of type jpeg,jpg,png(for now)',
-            'img.max' => 'The image(s) must not be larger than 2MB',
+            'img.*.mimes' => 'The image must be of type jpeg,jpg,png(for now)',
+            'img.*.max' => 'The image(s) must not be larger than 2MB',
         ];
     }
 }
