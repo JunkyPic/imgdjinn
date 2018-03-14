@@ -12,7 +12,7 @@
     <link href="{{ asset('css/slate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/css.css') }}" rel="stylesheet">
 
-    <title>ImgDjinn - @yield('title')</title>
+    <title>{{env('APP_NAME')}} - @yield('title')</title>
 </head>
 <body>
 
