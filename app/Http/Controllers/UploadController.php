@@ -49,10 +49,7 @@ class UploadController extends Controller
             $album = Album::create(
                 [
                     'alias'         => $albumAlias,
-                    'password'      => isset($albumPassword) ? \Hash::make(
-                        $albumPassword,
-                        PASSWORD_DEFAULT
-                    ) : null,
+                    'password'      => isset($albumPassword) ? \Hash::make($albumPassword) : null,
                     'token'         => isset($albumToken) ? $albumToken : null,
                     'display_token' => isset($albumToken) ? true : false,
                 ]
@@ -80,10 +77,7 @@ class UploadController extends Controller
                     [
                         'path'          => $imageName,
                         'alias'         => $imageAlias,
-                        'password'      => isset($albumPassword) ? \Hash::make(
-                            $albumPassword,
-                            PASSWORD_DEFAULT
-                        ) : null,
+                        'password'      => isset($albumPassword) ? \Hash::make($albumPassword) : null,
                         'token'         => isset($albumToken) ? $albumToken : null,
                         'display_token' => false,
                     ]
@@ -131,10 +125,7 @@ class UploadController extends Controller
                 [
                     'path'          => $imageName,
                     'alias'         => $imageAlias,
-                    'password'      => isset($imagePassword) ? \Hash::make(
-                        $imagePassword,
-                        PASSWORD_DEFAULT
-                    ) : null,
+                    'password'      => isset($imagePassword) ? \Hash::make($imagePassword) : null,
                     'token'         => isset($imageToken) ? $imageToken : null,
                     'display_token' => isset($imageToken) ? true : false,
                 ]
