@@ -53,8 +53,8 @@ class ImageController extends Controller
             $image = Image::where(['alias' => $alias])->first();
             if ($image->token === $request->request->get('token')) {
 
-                if (\File::exists(public_path('img/'.$image->path))) {
-                    \File::delete(public_path('img/'.$image->path));
+                if (\File::exists(\Config::get('image.path.upload') . $image->path)) {
+                    \File::delete(\Config::get('image.path.upload') . $image->path);
                 }
 
                 $image->delete();
@@ -72,8 +72,8 @@ class ImageController extends Controller
 
             if (\Hash::check($request->request->get('password'), $image->password)) {
 
-                if (\File::exists(public_path('img/'.$image->path))) {
-                    \File::delete(public_path('img/'.$image->path));
+                if (\File::exists(\Config::get('image.path.upload') . $image->path)) {
+                    \File::delete(\Config::get('image.path.upload') . $image->path);
                 }
 
                 // get the images too

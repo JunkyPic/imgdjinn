@@ -60,8 +60,8 @@ class AlbumController extends Controller
             if ($album->token === $request->request->get('token')) {
 
                 foreach ($album->images()->get() as $image) {
-                    if (\File::exists(public_path('img/'.$image->path))) {
-                        \File::delete(public_path('img/'.$image->path));
+                    if (\File::exists(\Config::get('image.path.upload') . $image->path)) {
+                        \File::delete(\Config::get('image.path.upload') . $image->path);
                     }
                 }
 
@@ -83,8 +83,8 @@ class AlbumController extends Controller
             if (\Hash::check($request->request->get('password'), $album->password)) {
 
                 foreach ($album->images()->get() as $image) {
-                    if (\File::exists(public_path('img/'.$image->path))) {
-                        \File::delete(public_path('img/'.$image->path));
+                    if (\File::exists(\Config::get('image.path.upload') . $image->path)) {
+                        \File::delete(\Config::get('image.path.upload') . $image->path);
                     }
                 }
 

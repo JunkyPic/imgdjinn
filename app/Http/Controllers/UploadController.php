@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UploadControllerRequestPost;
 use App\Models\Album;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use App\Models\Image as ImageModel;
 
@@ -33,15 +34,12 @@ class UploadController extends Controller
 
         if (count($images) > 1) {
             // create an album
-            $albumAlias = bin2hex(openssl_random_pseudo_bytes(5)).substr(str_replace('.', '', microtime(true)), -6);
+            $albumAlias = Str::random(10).substr(str_replace('.', '', microtime(true)), -6);
             $albumToken = null;
             $albumPassword = null;
 
             if ($request->request->has('optionsRadios') && $request->request->get('optionsRadios') == 'token') {
-                $albumToken = bin2hex(openssl_random_pseudo_bytes(20)).substr(
-                        str_replace('.', '', microtime(true)),
-                        -6
-                    );
+                $albumToken = Str::random(40) . substr(str_replace('.', '', microtime(true)), -6);
             }
 
             if ($request->request->has('optionsRadios') && $request->request->get('optionsRadios') == 'password') {
@@ -63,18 +61,18 @@ class UploadController extends Controller
             $imagesToAlbum = [];
 
             foreach ($images as $image) {
-                $imageName = bin2hex(openssl_random_pseudo_bytes(20)).substr(
+                $imageName = Str::random(40).substr(
                         str_replace('.', '', microtime(true)),
                         -6
                     ).'.'.$image->getClientOriginalExtension();
-                $imageAlias = bin2hex(openssl_random_pseudo_bytes(5)).substr(str_replace('.', '', microtime(true)), -6);
+                $imageAlias = Str::random(10).substr(str_replace('.', '', microtime(true)), -6);
 
                 $img = Image::make($image->getRealPath());
 
                 if ($image->getClientOriginalExtension() == 'gif') {
-                    copy($image->getRealPath(), public_path('img/'.$imageName));
+                    copy($image->getRealPath(), \Config::get('image.path.upload') . $imageName);
                 }else {
-                    $img->save(public_path('img/'.$imageName), 70);
+                    $img->save(\Config::get('image.path.upload') . $imageName, 70);
                 }
                 $img->destroy();
 
@@ -100,18 +98,18 @@ class UploadController extends Controller
         }
 
         foreach ($images as $image) {
-            $imageName = bin2hex(openssl_random_pseudo_bytes(20)).substr(
+            $imageName = Str::random(40).substr(
                     str_replace('.', '', microtime(true)),
                     -6
                 ).'.'.$image->getClientOriginalExtension();
-            $imageAlias = bin2hex(openssl_random_pseudo_bytes(5)).substr(str_replace('.', '', microtime(true)), -6);
+            $imageAlias = Str::random(10).substr(str_replace('.', '', microtime(true)), -6);
 
             $img = Image::make($image->getRealPath());
 
             if ($image->getClientOriginalExtension() == 'gif') {
-                copy($image->getRealPath(), public_path('img/'.$imageName));
+                copy($image->getRealPath(), \Config::get('image.path.upload') . $imageName);
             }else {
-                $img->save(public_path('img/'.$imageName), 70);
+                $img->save(\Config::get('image.path.upload') . $imageName, 70);
             }
             $img->destroy();
 
@@ -119,7 +117,7 @@ class UploadController extends Controller
             $imagePassword = null;
 
             if ($request->request->has('optionsRadios') && $request->request->get('optionsRadios') == 'token') {
-                $imageToken = bin2hex(openssl_random_pseudo_bytes(20)).substr(
+                $imageToken = Str::random(40).substr(
                         str_replace('.', '', microtime(true)),
                         -6
                     );
