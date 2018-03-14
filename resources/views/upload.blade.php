@@ -27,19 +27,16 @@
                                    multiple hidden>
             </label>
 
-            <small id="fileHelp" class="form-text text-muted">You can upload as many images as you want at
-                once
+            <small id="fileHelp" class="form-text text-muted">You can upload more than one image at a time
             </small>
         </div>
 
         <div class="form-control-plaintext">
-            <small class="form-text text-muted">If you ever want to delete this image/album you can do so using
-                one of the bellow options
+            <small class="form-text text-muted">If you ever want to delete an image or album you can do so using an auto-generated token or a password of your choosing
             </small>
-            <small class="form-text text-muted">This is generate per image/album. If you upload more than one(1)
-                image, an album is generated
+            <small class="form-text text-muted">If you upload more than one(1) image, an album is generated
             </small>
-            <small class="form-text text-muted">For images in a album, the album token/password applies
+            <small class="form-text text-muted">For images in an album, the album token/password applies
             </small>
         </div>
 
