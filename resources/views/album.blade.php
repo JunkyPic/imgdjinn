@@ -1,5 +1,9 @@
 @extends('layout.base')
 
+@section('title')
+    Album
+@endsection
+
 @section('content')
 
     @if(Session::has('error'))

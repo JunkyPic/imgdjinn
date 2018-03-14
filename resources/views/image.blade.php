@@ -1,5 +1,9 @@
 @extends('layout.base')
 
+@section('title')
+    Image
+@endsection
+
 @section('content')
     @if(Session::has('error'))
         <div class="alert alert-danger col-lg-8 text-center offset-lg-2">

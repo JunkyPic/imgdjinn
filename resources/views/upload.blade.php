@@ -1,4 +1,7 @@
 @extends('layout.base')
+@section('title')
+    Upload
+@endsection
 @section('content')
 <div class="col-md-6 offset-md-3">
     @if(Session::has('album_delete_success'))
