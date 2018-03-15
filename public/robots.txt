@@ -4,6 +4,7 @@ Crawl-delay: 10
 Disallow: /css/
 Disallow: /js/
 Disallow: /img/
+Disallow: /api/*
 
 # Begin block Bad-Robots from robots.txt
 User-agent: asterias

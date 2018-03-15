@@ -13,6 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/i/{alias}', 'Api\ImageController@apiGetImage')->name('apiGetImage');
+Route::get('/a/i/{alias}', 'Api\ImageController@apiGetAlbumImages')->name('apiGetAlbumImages');
