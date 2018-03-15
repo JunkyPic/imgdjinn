@@ -1,5 +1,7 @@
 @extends('layout.base')
-
+@section('title')
+    Register
+@endsection
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-8">
