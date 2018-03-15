@@ -16,7 +16,7 @@ class ImageController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getImagesUser() {
-        $images = Image::where(['user_id' => \Auth::user()->id])->paginate(6);
+        $images = Image::where(['user_id' => \Auth::user()->id])->orderBy('created_at', 'desc')->paginate(6);
         return view('user.images')->with(['images' => $images]);
     }
 

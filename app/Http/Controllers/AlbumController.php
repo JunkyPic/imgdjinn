@@ -16,7 +16,7 @@ class AlbumController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getAlbumsUser() {
-        $albums = Album::where(['user_id' => \Auth::user()->id])->paginate(6);
+        $albums = Album::where(['user_id' => \Auth::user()->id])->orderBy('created_at', 'desc')->paginate(6);
         return view('user.albums')->with(['albums' => $albums]);
     }
 
