@@ -34,3 +34,8 @@ Route::get('me/a/', 'AlbumController@getAlbumsUser')
 Route::get('me/i/', 'ImageController@getImagesUser')
     ->name('getImagesUser')
     ->middleware('cauth');
+
+// faq
+Route::get('faq', function () {
+  return view('faq');
+})->name('faq');
