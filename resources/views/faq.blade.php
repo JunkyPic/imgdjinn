@@ -8,7 +8,21 @@
 
     <div class="row">
         <div class="col-lg-12">
-            Coming soon
+            <h2>Is there an upload limit?</h2>
+            <p>No, currently there isn't any upload limit. However please upload within reason. I'm just one guy, I don't have unlimited funds.</p>
+            <hr>
+            <h2>How can I delete an image I've uploaded?</h2>
+            <p>If you've selected one of the options (auto-generate token or enter a password) then you can use the "Delete?" option at the bottom of either the album or image page.
+            If you didn't select either of the options previously mentioned then I'm afraid there's no way to delete the image.
+                At some point in time I'll create an option to delete the images/albums if you have a registered account(no email required) without the need for a token or password.
+            </p>
+            <hr>
+            <h2>What's your stance on privacy?</h2>
+            <p>I take privacy very seriously. I don't track or ever plan on tracking any activity on this site. There close no javascript and the one that is present is there for quality of life.
+            If you have questions or concerns regarding this, please feel free to email me <span class="text-info">andrew.danse@gmail.com</span> and I'll get back to you as soon as I can.
+                You can also find me on reddit.com/user/DE-8yO3fnJ4/ feel free to send me a message.
+            </p>
+            <hr>
         </div>
     </div>
 @endsection
