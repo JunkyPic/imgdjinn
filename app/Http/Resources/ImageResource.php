@@ -21,7 +21,7 @@ class ImageResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'path' => (string)$this->path,
+            $this->path,
         ];
     }
 }
