@@ -27,7 +27,7 @@
 
     @foreach($album->images()->get() as $item)
         <div class="col-lg-12 text-center" style="padding: 20px 0 20px 0;">
-            <a target="_blank" rel="noopener" href="{{route('showImage', ['alias' => $item->alias])}}"><img
+            <a target="_blank" rel="noopener" href="{{url('/img/' . $item->path)}}"><img
                         class="img-responsive rounded img-a" src="{{  url('/img/' . $item->path) }}"></a>
         </div>
     @endforeach
