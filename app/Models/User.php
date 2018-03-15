@@ -15,7 +15,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username',
+        'password',
+        'alias',
     ];
 
     /**
@@ -24,6 +26,21 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images() {
+        return $this->hasMany(Image::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function albums() {
+        return $this->hasMany(Album::class);
+    }
 }

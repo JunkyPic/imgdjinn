@@ -31,6 +31,7 @@ class UploadController extends Controller
     public function postUpload(UploadControllerRequestPost $request)
     {
         $images = $request->file('img');
+        $userId = \Auth::check() ? \Auth::user()->id : null;
 
         if (count($images) > 1) {
             // create an album
@@ -52,6 +53,7 @@ class UploadController extends Controller
                     'password'      => isset($albumPassword) ? \Hash::make($albumPassword) : null,
                     'token'         => isset($albumToken) ? $albumToken : null,
                     'display_token' => isset($albumToken) ? true : false,
+                    'user_id' => $userId,
                 ]
             );
 
@@ -80,6 +82,7 @@ class UploadController extends Controller
                         'password'      => isset($albumPassword) ? \Hash::make($albumPassword) : null,
                         'token'         => isset($albumToken) ? $albumToken : null,
                         'display_token' => false,
+                        'user_id' => $userId,
                     ]
                 );
 
@@ -128,6 +131,7 @@ class UploadController extends Controller
                     'password'      => isset($imagePassword) ? \Hash::make($imagePassword) : null,
                     'token'         => isset($imageToken) ? $imageToken : null,
                     'display_token' => isset($imageToken) ? true : false,
+                    'user_id' => $userId,
                 ]
             );
         }

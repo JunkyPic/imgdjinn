@@ -35,6 +35,7 @@ class Album extends Model
         'display_password',
         'token',
         'display_token',
+        'user_id',
     ];
 
     /**
@@ -42,5 +43,12 @@ class Album extends Model
      */
     public function images() {
         return $this->hasMany(Image::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(){
+        return $this->belongsto(User::class);
     }
 }

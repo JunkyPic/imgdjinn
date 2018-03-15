@@ -21,7 +21,7 @@
         </div>
     @endforeach
 
-    <form action="{{ action('UploadController@postUpload') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('postUpload') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label class="btn btn-primary btn-lg btn-block">

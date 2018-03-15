@@ -14,9 +14,17 @@
     <title>{{env('APP_NAME')}} - @yield('title')</title>
 </head>
 <body>
-
-<nav id="navbar_base" class="navbar navbar-expand-lg navbar-dark bg-primary text-center">
+<nav id="navbar_base" class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand navbar-dark" href="{{ route('getUpload') }}">Home</a>
+    @if(Auth::check())
+        <a class="navbar-brand navbar-dark" href="{{ route('getProfile') }}">{{ __('Profile') }}</a>
+        <a class="navbar-brand navbar-dark" href="{{ route('getAlbumsUser') }}">{{ __('Albums') }}</a>
+        <a class="navbar-brand navbar-dark" href="{{ route('getImagesUser') }}">{{ __('Images') }}</a>
+        <a class="navbar-brand navbar-dark" href="{{ route('getLogout') }}">{{ __('Logout') }}</a>
+    @else
+        <a class="navbar-brand navbar-dark" href="{{ route('getLogin') }}">{{ __('Login') }}</a>
+        <a class="navbar-brand navbar-dark" href="{{ route('getRegister') }}">{{ __('Register') }}</a>
+    @endif
 </nav>
 <div class="container">
     @yield('content')

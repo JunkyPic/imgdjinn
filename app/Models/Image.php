@@ -35,12 +35,20 @@ class Image extends Model
         'display_password',
         'token',
         'display_token',
+        'user_id',
     ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function album(){
-        return $this->belongsto(Album::class, '');
+        return $this->belongsto(Album::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(){
+        return $this->belongsto(User::class);
     }
 }

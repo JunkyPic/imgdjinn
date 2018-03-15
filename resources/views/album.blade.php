@@ -43,7 +43,7 @@
         </div>
 
         <div class="col-md-6 offset-md-3 text-left" id="delete-album-div">
-            <form action="{{ action('AlbumController@delete', ['alias' => $album->alias]) }}" method="post">
+            <form action="{{ route('postAlbumDelete', ['alias' => $album->alias]) }}" method="post">
                 @csrf
                 <fieldset class="form-group">
                     <div class="form-check">
