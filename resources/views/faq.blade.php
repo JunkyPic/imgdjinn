@@ -13,13 +13,14 @@
             <hr>
             <h2>How can I delete an image I've uploaded?</h2>
             <p>If you've selected one of the options (auto-generate token or enter a password) then you can use the "Delete?" option at the bottom of either the album or image page.
-            If you didn't select either of the options previously mentioned then I'm afraid there's no way to delete the image.
+            If you didn't select either of the options previously mentioned then I'm afraid there's no way to delete the image(you can send me an email or something and I'll see what I can do - see next question).
                 At some point in time I'll create an option to delete the images/albums if you have a registered account(no email required) without the need for a token or password.
             </p>
             <hr>
             <h2>What's your stance on privacy?</h2>
-            <p>I take privacy very seriously. I don't track or ever plan on tracking any activity on this site. There close no javascript and the one that is present is there for quality of life.
-            If you have questions or concerns regarding this, please feel free to email me <span class="text-info">andrew.danse@gmail.com</span> and I'll get back to you as soon as I can.
+            <p>I take privacy very seriously. I don't track or ever plan on tracking any activity on this site. There's close to no javascript and the one that is present is there for quality of life.
+                The register option doesn't require an email and it never will.
+            If you have questions or concerns regarding this, please feel free to email me(<span class="text-info">andrew.danse@gmail.com</span>) and I'll get back to you as soon as I can.
                 You can also find me on reddit.com/user/DE-8yO3fnJ4/ feel free to send me a message.
             </p>
             <hr>
