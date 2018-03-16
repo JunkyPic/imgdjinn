@@ -3,6 +3,6 @@
 return [
   'path' => [
       'upload' => public_path('img/'),
-      'link' => url('img/'),
+      'link' => url('img') . '/',
   ]
 ];

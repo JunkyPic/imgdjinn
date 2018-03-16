@@ -16,7 +16,7 @@ class ImagesResource extends ResourceCollection
     {
         $data = [];
         foreach($this->resource as $item) {
-            $data[] = \Config::get('image.path.link') . $item->path;
+            $data[] = \Config::get('image.path.link')  . $item->path;
         }
 
         return $data;
