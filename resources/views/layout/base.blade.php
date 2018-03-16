@@ -26,6 +26,7 @@
         <a class="navbar-brand navbar-dark" href="{{ route('getLogin') }}">{{ __('Login') }}</a>
         <a class="navbar-brand navbar-dark" href="{{ route('getRegister') }}">{{ __('Register') }}</a>
     @endif
+    <a class="navbar-brand navbar-dark" href="{{ route('faq') }}">FAQ</a>
 </nav>
 <div class="container">
     @yield('content')
