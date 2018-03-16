@@ -18,6 +18,7 @@ class Cache extends Middleware
   {
 
     $request->header('Cache-Control', 'max-age=86400, public');
+    $request->header('X-www-test-header', 'test-value');
 
     return $next($request);
   }
