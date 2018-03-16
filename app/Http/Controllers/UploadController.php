@@ -35,7 +35,7 @@ class UploadController extends Controller
 
         if (count($images) > 1) {
             // create an album
-            $albumAlias = Str::random(10).substr(str_replace('.', '', microtime(true)), -6);
+            $albumAlias = Str::random(6).substr(str_replace('.', '', microtime(true)), -4);
             $albumToken = null;
             $albumPassword = null;
 
@@ -60,11 +60,11 @@ class UploadController extends Controller
             $imagesToAlbum = [];
 
             foreach ($images as $image) {
-                $imageName = Str::random(40).substr(
+                $imageName = Str::random(6).substr(
                         str_replace('.', '', microtime(true)),
-                        -6
+                        -4
                     ).'.'.$image->getClientOriginalExtension();
-                $imageAlias = Str::random(10).substr(str_replace('.', '', microtime(true)), -6);
+                $imageAlias = Str::random(6).substr(str_replace('.', '', microtime(true)), -4);
 
                 $img = Image::make($image->getRealPath());
 
@@ -95,11 +95,11 @@ class UploadController extends Controller
         }
 
         foreach ($images as $image) {
-            $imageName = Str::random(40).substr(
+            $imageName = Str::random(6).substr(
                     str_replace('.', '', microtime(true)),
-                    -6
+                    -4
                 ).'.'.$image->getClientOriginalExtension();
-            $imageAlias = Str::random(10).substr(str_replace('.', '', microtime(true)), -6);
+            $imageAlias = Str::random(6).substr(str_replace('.', '', microtime(true)), -4);
 
             $img = Image::make($image->getRealPath());
 
