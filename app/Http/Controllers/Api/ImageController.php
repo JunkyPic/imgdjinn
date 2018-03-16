@@ -25,11 +25,9 @@ class ImageController extends Controller
     public function apiGetImage($alias) {
         ImageResource::withoutWrapping();
 
-      $image = Image::where(['alias' => $alias])->select('path')->first();
-
-      return new JsonResponse($image->path, 200, ['Access-Control-Allow-Origin' => '*']);
-
-//        return new ImageResource();
+        return (new ImageResource(Image::where(['alias' => $alias])->select('path')->first()))
+          ->response()
+          ->header('Access-Control-Allow-Origin', 'https://www.reddit.com');
     }
 
     public function apiGetAlbumImages($alias) {
@@ -37,13 +35,8 @@ class ImageController extends Controller
 
         $album = Album::where(['alias' => $alias])->first();
 
-        $data = [];
-        foreach($album->images()->get() as $item) {
-          $data[] = $item->path;
-        }
-
-        return new JsonResponse($data, 200, ['Access-Control-Allow-Origin' => '*']);
-
-        return new ImagesResource($album->images()->get());
+        return (new ImagesResource($album->images()->get()))
+          ->response()
+          ->header('Access-Control-Allow-Origin', 'https://www.reddit.com');
     }
 }

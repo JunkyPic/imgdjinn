@@ -21,7 +21,7 @@ class ImageResource extends JsonResource
     public function toArray($request)
     {
         return [
-            $this->path,
+            \Config::get('image.path.link') . $this->path,
         ];
     }
 }
