@@ -23,7 +23,7 @@ class UploadControllerRequestPost extends FormRequest
      */
     public function rules()
     {
-        $rules['img.*'] = 'image|mimes:jpeg,jpg,png,gif,webp|max:2048';
+        $rules['img.*'] = 'image|mimes:jpeg,jpg,png,gif,webp|max:10240';
         $rules['img'] = 'required';
 
         if($this->request->has('create_password')) {
@@ -39,7 +39,7 @@ class UploadControllerRequestPost extends FormRequest
     public function messages() {
         return [
             'img.required' => 'At least one image must be uploaded',
-            'img.*' => 'The image(s) must be of type jpeg, jpg, png, gif with a maximum size of 2MB',
+            'img.*' => 'The image(s) must be of type jpeg, jpg, png, gif with a maximum size of 10MB',
         ];
     }
 }
