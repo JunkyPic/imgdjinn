@@ -12,6 +12,7 @@
     <link href="{{ asset('css/css.css') }}" rel="stylesheet">
 
     <title>{{env('APP_NAME')}} - @yield('title')</title>
+    <?php header('Cache-Control: max-age=9999999'); ?>
 </head>
 <body>
 <nav id="navbar_base" class="navbar navbar-expand-lg navbar-dark bg-primary">
