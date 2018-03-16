@@ -37,8 +37,12 @@ class ImageController extends Controller
 
         $album = Album::where(['alias' => $alias])->first();
 
+        $data = [];
+        foreach($album->images()->get() as $item) {
+          $data[] = $item->path;
+        }
 
-
+        return new JsonResponse($data, 200, ['Access-Control-Allow-Origin' => '*']);
 
         return new ImagesResource($album->images()->get());
     }
