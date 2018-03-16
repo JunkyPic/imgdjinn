@@ -16,7 +16,8 @@
         <div class="alert alert-info col-lg-8 text-center offset-lg-2">
             This message will appear ONLY once.
             <br>
-            This is your token for this album. Don't lose it or you won't be able to delete this album.
+            This is your token for this album, it can be used to delete it, even if not logged in.
+            For images in this album, this token applies.
             <br>
             <br>
             <strong>{{ $album->token }}</strong>

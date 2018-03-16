@@ -15,7 +15,7 @@
         <div class="alert alert-info col-lg-8 text-center offset-lg-2">
             This message will appear ONLY once.
             <br>
-            This is your token for this image. Don't lose it or you won't be able to delete this image.
+            This is your token for this image, it can be used to delete it, even if not logged in.
             <br>
             <br>
             <strong>{{ $image->token }}</strong>
