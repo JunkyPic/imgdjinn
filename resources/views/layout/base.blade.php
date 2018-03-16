@@ -16,7 +16,7 @@
 </head>
 <body>
 <nav id="navbar_base" class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand navbar-dark" href="{{ route('getUpload') }}">Home</a>
+    <a class="navbar-brand navbar-dark" href="{{ route('getUpload') }}">{{ __('Upload') }}</a>
     @if(Auth::check())
         <a class="navbar-brand navbar-dark" href="{{ route('getProfile') }}">{{ __('Profile') }}</a>
         <a class="navbar-brand navbar-dark" href="{{ route('getAlbumsUser') }}">{{ __('Albums') }}</a>
