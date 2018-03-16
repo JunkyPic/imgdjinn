@@ -30,8 +30,8 @@
                                    multiple hidden>
             </label>
 
-            <small id="fileHelp" class="form-text text-muted">You can upload more than one image at a time
-            </small>
+            <small id="fileHelp" class="form-text text-muted">You can upload more than one image at a time</small>
+            <small id="fileHelp" class="form-text text-muted">Feel free to upload NSFW images as long as it's nothing illegal</small>
         </div>
 
         <div class="form-control-plaintext">
