@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ImageControllerDeleteImagePost;
+use App\Models\Album;
 use App\Models\Image;
 use Illuminate\Http\Request;
 
@@ -12,6 +14,44 @@ use Illuminate\Http\Request;
  */
 class ImageController extends Controller
 {
+    /**
+     * @param                                $imageAlias
+     * @param ImageControllerDeleteImagePost $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function userPostImageDelete($imageAlias, ImageControllerDeleteImagePost $request) {
+        $image = Image::where(['alias' => $imageAlias])->first();
+
+        if(null === $image) {
+            return redirect()->back()->with('error', 'Image not found');
+        }
+
+        if($image->user_id != \Auth::user()->id) {
+            return redirect()->back()->with('error', 'Image not associated with current user');
+        }
+
+        // Check for album too
+        if(null !== $image->album_id) {
+            // Get the album and count total photos in it
+            $album = Album::where(['id' => $image->album_id])->with('images')->first();
+        }
+
+        if(\File::exists(\Config::get('image.path.upload') . $image->path)) {
+            if(isset($album) && $album->images()->count() == 1) {
+                // remove the album too since this is the last image
+                $album->delete();
+            }
+
+            $image->delete();
+            \File::delete(\Config::get('image.path.upload') . $image->path);
+
+            return redirect()->back()->with('success', 'Image successfully deleted');
+        }
+
+        return redirect()->back()->with('error', 'Something went wrong. Not sure what tho...Try again later maybe?');
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

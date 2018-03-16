@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AlbumControllerDeleteAlbumPost;
 use App\Models\Album;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,35 @@ use Illuminate\Http\Request;
  */
 class AlbumController extends Controller
 {
+    /**
+     * @param                                $albumAlias
+     * @param AlbumControllerDeleteAlbumPost $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function userPostAlbumDelete($albumAlias, AlbumControllerDeleteAlbumPost $request){
+        $album = Album::where(['alias' => $albumAlias])->with('images')->first();
+
+        if(null === $album) {
+            return redirect()->back()->with('error', 'Album not found');
+        }
+
+        if($album->user_id != \Auth::user()->id) {
+            return redirect()->back()->with('error', 'Album not associated with current user');
+        }
+
+        foreach ($album->images()->get() as $image) {
+            if(\File::exists(\Config::get('image.path.upload') . $image->path)) {
+                $image->delete();
+                \File::delete(\Config::get('image.path.upload') . $image->path);
+            }
+        }
+
+        $album->delete();
+        return redirect()->back()->with('success', 'Album successfully deleted');
+
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

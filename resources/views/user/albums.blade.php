@@ -5,6 +5,27 @@
 @endsection
 
 @section('content')
+
+    @if(Session::has('error'))
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="alert alert-danger">
+                    <strong>{{ Session::get('error') }}</strong>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if(Session::has('success'))
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="alert alert-info">
+                    <strong>{{ Session::get('success') }}</strong>
+                </div>
+            </div>
+        </div>
+    @endif
+
     @if($albums->count() == 0)
         <div class="row">
             <div class="col-lg-12">
@@ -21,9 +42,33 @@
                             <span class="badge badge-info">Has password - <small>{{ null === $album->password ? 'No' : 'Yes' }}</small></span>
                             <span class="badge badge-info">Token - <small>{{ null === $album->token ? 'No token found' :  $album->token}}</small></span>
                         </div>
-                        <a href="{{ route('showAlbum', ['alias' => $album->alias]) }}">
-                            <img class="img-responsive rounded img-a" src="{{  url('/img/' . $album->images()->first()->path ) }}">
-                        </a>
+                        <div class="col-lg-12">
+                            <a href="{{ route('showAlbum', ['alias' => $album->alias]) }}">
+                                <img class="img-responsive rounded img-a" src="{{  url('/img/' . $album->images()->first()->path ) }}">
+                            </a>
+                        </div>
+                        <div class="col-lg-12 mrg-top">
+                            <form action="{{ route('userPostAlbumDelete', ['alias' => $album->alias]) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-lg btn-block">Delete</button>
+                                <fieldset class="form-group">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            @foreach($errors->all() as $message)
+                                                <span class="text-danger">
+                                                    <small>{{ $message }}</small>
+                                                </span>
+                                                <br>
+                                            @endforeach
+                                            <input type="checkbox" class="form-check-input" name="confirm">
+                                            <small>I understand that I cannot undo this action</small>
+                                        </label>
+
+                                    </div>
+                                </fieldset>
+
+                            </form>
+                        </div>
                     </div>
                 @endforeach
             </div>
