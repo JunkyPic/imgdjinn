@@ -16,11 +16,13 @@ class Cache extends Middleware
    */
   public function handle($request, \Closure $next, $guard = null)
   {
-
-    $request->header('Cache-Control', 'max-age=86400, public');
-    $request->header('X-www-test-header', 'test-value');
+    $request->headers->add([
+      'Cache-Control' => 'max-age=86400, public',
+      'X-www-test-header' =>'test-value'
+    ]);
 
     return $next($request);
   }
 
 }
+
