@@ -27,7 +27,7 @@ class ImageController extends Controller
 
         return (new ImageResource(Image::where(['alias' => $alias])->select('path')->first()))
           ->response()
-          ->header('Access-Control-Allow-Origin', 'https://www.reddit.com');
+          ->header('Access-Control-Allow-Origin', '*');
     }
 
     public function apiGetAlbumImages($alias) {
@@ -37,6 +37,6 @@ class ImageController extends Controller
 
         return (new ImagesResource($album->images()->get()))
           ->response()
-          ->header('Access-Control-Allow-Origin', 'https://www.reddit.com');
+          ->header('Access-Control-Allow-Origin', '*');
     }
 }
