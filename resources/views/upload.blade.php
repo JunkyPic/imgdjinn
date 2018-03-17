@@ -31,39 +31,43 @@
             </label>
         </div>
 
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="tokenNone" value="none"
-                       onclick="hidePasswordInput(); showNoneText();" checked="checked">
-                Don't create a token or password
-                <small id="none" class="form-text text-muted">You(or anyone else for that matter) won't be able
-                    to delete this image/album
-                </small>
-            </label>
-        </div>
-
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="tokenRadio" value="token"
-                       onclick="hidePasswordInput();">
-                    Auto-generate a delete token
-            </label>
-        </div>
-
-        <fieldset class="form-group">
+        @if(!Auth::check())
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="optionsRadios" id="passwordRadio"
-                           value="password" onclick="showPasswordInput();">
-                    Allow me to enter a password
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="tokenNone" value="none"
+                           onclick="hidePasswordInput(); showNoneText();" checked="checked">
+                    Don't create a token or password
+                    <small id="none" class="form-text text-muted">You(or anyone else for that matter) won't be able
+                        to delete this image/album
+                    </small>
                 </label>
             </div>
 
-            <div class="form-group" id="passwordForm">
-                <input type="password" class="form-control" id="password" name="password"
-                       aria-describedby="passwordHelp">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="tokenRadio" value="token"
+                           onclick="hidePasswordInput();">
+                        Auto-generate a delete token
+                </label>
             </div>
-        </fieldset>
+
+            <fieldset class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optionsRadios" id="passwordRadio"
+                               value="password" onclick="showPasswordInput();">
+                        Allow me to enter a password
+                    </label>
+                </div>
+
+                <div class="form-group" id="passwordForm">
+                    <input type="password" class="form-control" id="password" name="password"
+                           aria-describedby="passwordHelp">
+                </div>
+            </fieldset>
+        @else
+            <div class="splitter"></div>
+        @endif
         <button type="submit" class="btn btn-primary btn-lg btn-block">Upload</button>
     </form>
 </div>
