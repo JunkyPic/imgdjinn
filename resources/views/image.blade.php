@@ -33,7 +33,7 @@
                 </video>
             </a>
         @else
-            <a href="{{ route('showImage', ['alias' => $image->alias]) }}">
+            <a target="_blank" href="{{  url('/img/' . $image->path ) }}">
                 <img class="img-responsive rounded img-a" src="{{  url('/img/' . $image->path ) }}">
             </a>
         @endif
