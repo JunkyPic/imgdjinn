@@ -67,7 +67,8 @@ class UploadController extends Controller
 
                 $img = Image::make($image->getRealPath());
                 if ($image->getClientOriginalExtension() == 'gif') {
-                    $process = new Process('/usr/bin/ffmpeg -i ' . $image->getRealPath() . ' ' . rtrim(\Config::get('image.path.upload'), '/') . DIRECTORY_SEPARATOR . Str::random(10) . '.webm');
+                    $imageName = Str::random(10) . '.webm';
+                    $process = new Process('/usr/bin/ffmpeg -i ' . $image->getRealPath() . ' ' . rtrim(\Config::get('image.path.upload'), '/') . DIRECTORY_SEPARATOR . $imageName);
                     try {
                         $process->mustRun();
                     } catch (ProcessFailedException $exception) {
@@ -105,7 +106,8 @@ class UploadController extends Controller
             $img = Image::make($image->getRealPath());
 
             if ($image->getClientOriginalExtension() == 'gif') {
-                $process = new Process('/usr/bin/ffmpeg -i ' . $image->getRealPath() . ' ' . rtrim(\Config::get('image.path.upload'), '/') . DIRECTORY_SEPARATOR . Str::random(10) . '.webm');
+                $imageName = Str::random(10) . '.webm';
+                $process = new Process('/usr/bin/ffmpeg -i ' . $image->getRealPath() . ' ' . rtrim(\Config::get('image.path.upload'), '/') . DIRECTORY_SEPARATOR . $imageName);
                 try {
                     $process->mustRun();
                 } catch (ProcessFailedException $exception) {

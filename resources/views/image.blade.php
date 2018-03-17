@@ -25,8 +25,15 @@
     @endif
 
     <div class="col-lg-12 text-center" style="padding: 20px 0 20px 0;">
-        <a target="_blank" rel="noopener" href="{{  url('/img/' . $image->path) }}"><img
-                    class="img-responsive rounded img-a" src="{{  url('/img/' . $image->path) }}"></a>
+        @if(strstr($image->path, '.webm'))
+            <video width="400" controls autoplay loop>
+                <source src="{{  url('/img/' . $image->path) }}" type="video/webm">
+                Your browser does not support HTML5 video.
+            </video>
+        @else
+            <a target="_blank" rel="noopener" href="{{  url('/img/' . $image->path) }}"><img
+                        class="img-responsive rounded img-a" src="{{  url('/img/' . $image->path) }}"></a>
+        @endif
     </div>
 @endsection
 
