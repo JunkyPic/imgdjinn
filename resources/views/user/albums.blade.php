@@ -39,10 +39,6 @@
                 @foreach($chunk as $album)
                     <div class="col-lg-6 text-center">
                         <div class="col-lg-12">
-                            <span class="badge badge-info">Has password - <small>{{ null === $album->password ? 'No' : 'Yes' }}</small></span>
-                            <span class="badge badge-info">Token - <small>{{ null === $album->token ? 'No token found' :  $album->token}}</small></span>
-                        </div>
-                        <div class="col-lg-12">
                             @if(strstr($album->images()->first()->path, '.webm'))
                                 <a href="{{ route('showAlbum', ['alias' => $album->alias]) }}">
                                     <video width="100%" controls autoplay loop>

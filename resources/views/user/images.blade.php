@@ -38,10 +38,6 @@
                 @foreach($chunk as $image)
                     <div class="col-lg-4 text-center">
                         <div class="col-lg-12">
-                            <span class="badge badge-info">Has password - <small>{{ null === $image->password ? 'No' : 'Yes' }}</small></span>
-                            <span class="badge badge-info">Token - <small>{{ null === $image->token ? 'No token found' :  $image->token}}</small></span>
-                        </div>
-                        <div class="col-lg-12">
                             @if(strstr($image->path, '.webm'))
                                 <a href="{{ route('showImage', ['alias' => $image->alias]) }}">
                                     <video width="100%" controls autoplay loop>
