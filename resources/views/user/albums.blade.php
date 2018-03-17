@@ -45,7 +45,7 @@
                         <div class="col-lg-12">
                             @if(strstr($album->images()->first()->path, '.webm'))
                                 <a href="{{ route('showAlbum', ['alias' => $album->alias]) }}">
-                                    <video width="400" controls autoplay loop>
+                                    <video width="100%" controls autoplay loop>
                                         <source src="{{  url('/img/' . $album->images()->first()->path) }}" type="video/webm">
                                         Your browser does not support HTML5 video.
                                     </video>
