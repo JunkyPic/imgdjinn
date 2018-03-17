@@ -23,7 +23,7 @@ class UploadControllerRequestPost extends FormRequest
      */
     public function rules()
     {
-        $rules['img.*'] = 'image|mimes:jpeg,jpg,png,gif,webp|max:10240';
+        $rules['img.*'] = 'image|mimes:jpeg,jpg,png,gif,webm|max:5000';
         $rules['img'] = 'required';
 
         if($this->request->has('create_password')) {
