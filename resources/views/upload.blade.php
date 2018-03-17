@@ -29,18 +29,6 @@
                                    name="img[]"
                                    multiple hidden>
             </label>
-
-            <small id="fileHelp" class="form-text text-muted">You can upload more than one image at a time</small>
-            <small id="fileHelp" class="form-text text-muted">Feel free to upload NSFW images as long as it's nothing illegal</small>
-        </div>
-
-        <div class="form-control-plaintext">
-            <small class="form-text text-muted">If you ever want to delete an image or album you can do so using an auto-generated token or a password of your choosing
-            </small>
-            <small class="form-text text-muted">If you upload more than one(1) image, an album is generated
-            </small>
-            <small class="form-text text-muted">For images in an album, the album token/password applies
-            </small>
         </div>
 
         <div class="form-check">
@@ -82,17 +70,7 @@
 @endsection
 
 @section('footer')
-    <nav class="mrg-top">
-        <hr>
-        <div class="col-lg-12 text-center">
-            <small class="form-text text-muted">If you would like to donate, I accept cryptocurrencies</small>
-            <small class="form-text text-muted">Ethereum - 0x01b45ce8192450d5bfbe618bb4fbf11da49abd9c</small>
-            <small class="form-text text-muted">XRB/Nano - xrb_18suehpm997rbu7ahoepew8xtrys38n9xrke193y8zwfnyi79xojz3pzxuk3</small>
-       </div>
-        <div class="col-lg-12 text-center">
-            <a href="{{ route('faq') }}"><small class="form-text text-muted">FAQ</small></a>
-        </div>
-    </nav>
+
 @endsection
 
 @section('scripts')
