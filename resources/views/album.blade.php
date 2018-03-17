@@ -29,10 +29,12 @@
     @foreach($album->images()->get() as $item)
         @if(strstr($item->path, '.webm'))
             <div class="col-lg-12 text-center" style="padding: 20px 0 20px 0;">
-                <video width="100%" controls autoplay loop>
-                    <source src="{{  url('/img/' . $item->path) }}" type="video/webm">
-                    Your browser does not support HTML5 video.
-                </video>
+                <a target="_blank" rel="noopener" href="{{url('/img/' . $item->path)}}">
+                    <video width="100%" controls autoplay loop>
+                        <source src="{{  url('/img/' . $item->path) }}" type="video/webm">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </a>
             </div>
         @else
             <div class="col-lg-12 text-center" style="padding: 20px 0 20px 0;">
