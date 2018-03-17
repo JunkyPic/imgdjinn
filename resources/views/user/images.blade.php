@@ -42,9 +42,19 @@
                             <span class="badge badge-info">Token - <small>{{ null === $image->token ? 'No token found' :  $image->token}}</small></span>
                         </div>
                         <div class="col-lg-12">
-                            <a href="{{ route('showImage', ['alias' => $image->alias]) }}">
-                                <img class="img-responsive rounded img-a" src="{{  url('/img/' . $image->path ) }}">
-                            </a>
+                            @if(strstr($image->path, '.webm'))
+                                <a href="{{ route('showImage', ['alias' => $image->alias]) }}">
+                                    <video width="400" controls autoplay loop>
+                                        <source src="{{  url('/img/' . $image->path) }}" type="video/webm">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                </a>
+                            @else
+                                <a href="{{ route('showImage', ['alias' => $image->alias]) }}">
+                                    <img class="img-responsive rounded img-a" src="{{  url('/img/' . $image->path ) }}">
+                                </a>
+                            @endif
+
                         </div>
                         <div class="col-lg-12 mrg-top">
                             <form action="{{ route('userPostImageDelete', ['alias' => $image->alias]) }}" method="post">
