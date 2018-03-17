@@ -7,6 +7,8 @@ use App\Models\Album;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use App\Models\Image as ImageModel;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 /**
  * Class UploadController
@@ -64,9 +66,14 @@ class UploadController extends Controller
                 $imageAlias = Str::random(10);
 
                 $img = Image::make($image->getRealPath());
-
                 if ($image->getClientOriginalExtension() == 'gif') {
-                    copy($image->getRealPath(), \Config::get('image.path.upload') . $imageName);
+                    $process = new Process('/usr/bin/ffmpeg -i ' . $image->getRealPath() . ' ' . rtrim(\Config::get('image.path.upload'), '/') . DIRECTORY_SEPARATOR . Str::random(10) . '.webm');
+                    try {
+                        $process->mustRun();
+                    } catch (ProcessFailedException $exception) {
+                        // well that sucks, it failed for some reason
+                        copy($image->getRealPath(), \Config::get('image.path.upload') . $imageName);
+                    }
                 }else {
                     $img->save(\Config::get('image.path.upload') . $imageName, 70);
                 }
@@ -98,7 +105,13 @@ class UploadController extends Controller
             $img = Image::make($image->getRealPath());
 
             if ($image->getClientOriginalExtension() == 'gif') {
-                copy($image->getRealPath(), \Config::get('image.path.upload') . $imageName);
+                $process = new Process('/usr/bin/ffmpeg -i ' . $image->getRealPath() . ' ' . rtrim(\Config::get('image.path.upload'), '/') . DIRECTORY_SEPARATOR . Str::random(10) . '.webm');
+                try {
+                    $process->mustRun();
+                } catch (ProcessFailedException $exception) {
+                    // well that sucks, it failed for some reason
+                    copy($image->getRealPath(), \Config::get('image.path.upload') . $imageName);
+                }
             }else {
                 $img->save(\Config::get('image.path.upload') . $imageName, 70);
             }
