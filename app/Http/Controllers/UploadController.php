@@ -18,14 +18,6 @@ use Symfony\Component\Process\Process;
 class UploadController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getUpload()
-    {
-        return view('upload');
-    }
-
-    /**
      * @param UploadControllerRequestPost $request
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -88,6 +80,8 @@ class UploadController extends Controller
                         'token'         => isset($albumToken) ? $albumToken : null,
                         'display_token' => false,
                         'user_id' => $userId,
+                        'is_nsfw' => $request->request->has('nsfw') ? true : false,
+                        'is_private' => $request->request->has('private') ? true : false,
                     ]
                 );
 
@@ -141,6 +135,8 @@ class UploadController extends Controller
                     'token'         => isset($imageToken) ? $imageToken : null,
                     'display_token' => isset($imageToken) ? true : false,
                     'user_id' => $userId,
+                    'is_nsfw' => $request->request->has('nsfw') ? true : false,
+                    'is_private' => $request->request->has('private') ? true : false,
                 ]
             );
         }

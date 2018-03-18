@@ -17,7 +17,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'getUpload';
+    protected $redirectTo = 'home';
 
     /**
      * RegisterController constructor.
@@ -55,7 +55,7 @@ class RegisterController extends Controller
         ]);
         if (\Auth::attempt([
             'username' => $request->get('username'), 'password' => $request->get('password')])) {
-            return redirect()->route('getUpload');
+            return redirect()->route('home');
         }
 
         return abort(520);

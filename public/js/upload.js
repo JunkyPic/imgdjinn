@@ -1,4 +1,6 @@
-document.getElementById('passwordForm').style.display ='none';
+if(document.getElementById('passwordForm')) {
+    document.getElementById('passwordForm').style.display ='none';
+}
 
 function showPasswordInput(){
     document.getElementById('passwordForm').style.display ='block';

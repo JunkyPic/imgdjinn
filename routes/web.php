@@ -1,12 +1,13 @@
 <?php
+Route::get('/', 'HomeController@home')->name('home');
+
 Route::get('a/{alias}', 'AlbumController@show')->name('showAlbum');
 Route::post('a/delete/{alias}', 'AlbumController@delete')->name('postAlbumDelete');
 
 Route::get('i/{alias}', 'ImageController@show')->name('showImage');
 Route::post('i/delete/{alias}', 'ImageController@delete')->name('postImageDelete');
 
-Route::get('/', 'UploadController@getUpload')->name('getUpload');
-Route::post('/', 'UploadController@postUpload')->name('postUpload');
+Route::post('/u', 'UploadController@postUpload')->name('postUpload');
 
 // auth
 Route::get('register', 'Auth\RegisterController@getRegister')->name('getRegister');

@@ -14,6 +14,6 @@ class LogoutController extends Controller
             \Auth::logout();
         }
 
-        return redirect()->route('getUpload');
+        return redirect()->route('home');
     }
 }

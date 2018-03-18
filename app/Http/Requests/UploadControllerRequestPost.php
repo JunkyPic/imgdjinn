@@ -13,7 +13,7 @@ class UploadControllerRequestPost extends FormRequest
      */
     public function authorize()
     {
-        return true; // user is always atuhorized to make this request
+        return true; // user is always authorized to make this request
     }
 
     /**
@@ -39,7 +39,7 @@ class UploadControllerRequestPost extends FormRequest
     public function messages() {
         return [
             'img.required' => 'At least one image must be uploaded',
-            'img.*' => 'The image(s) must be of type jpeg, jpg, png, gif with a maximum size of 10MB',
+            'img.*' => 'The image(s) must be of type jpeg, jpg, png, gif with a maximum size of 5MB',
         ];
     }
 }

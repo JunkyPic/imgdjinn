@@ -36,6 +36,8 @@ class Album extends Model
         'token',
         'display_token',
         'user_id',
+        'is_nsfw',
+        'is_private',
     ];
 
     /**

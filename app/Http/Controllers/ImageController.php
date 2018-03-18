@@ -107,7 +107,7 @@ class ImageController extends Controller
 
                 $image->delete();
 
-                return redirect()->route('getUpload')->with(
+                return redirect()->route('home')->with(
                     ['image_delete_success' => 'Image deleted successfully']
                 );
             }
@@ -127,7 +127,7 @@ class ImageController extends Controller
                 // get the images too
                 $image->delete();
 
-                return redirect()->route('getUpload')->with(
+                return redirect()->route('home')->with(
                     ['image_delete_success' => 'Image deleted successfully']
                 );
             }

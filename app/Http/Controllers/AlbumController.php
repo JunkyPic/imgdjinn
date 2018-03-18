@@ -107,7 +107,7 @@ class AlbumController extends Controller
                 $album->images()->delete();
                 $album->delete();
 
-                return redirect()->route('getUpload')->with(
+                return redirect()->route('home')->with(
                     ['album_delete_success' => 'Album and associated images deleted successfully']
                 );
             }
@@ -130,7 +130,7 @@ class AlbumController extends Controller
                 $album->images()->delete();
                 $album->delete();
 
-                return redirect()->route('getUpload')->with(
+                return redirect()->route('home')->with(
                     ['album_delete_success' => 'Album and associated images deleted successfully']
                 );
             }

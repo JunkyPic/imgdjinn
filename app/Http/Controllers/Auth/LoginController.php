@@ -43,7 +43,7 @@ class LoginController extends Controller
             'username' => $request->get('username'),
             'password' => $request->get('password')]))
         {
-            return redirect()->route('getUpload');
+            return redirect()->route('home');
         }
 
         return redirect()->back();
