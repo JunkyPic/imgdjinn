@@ -30,13 +30,13 @@ class HomeController extends Controller
         if(isset($filters['f_ord'])) {
             switch($filters['f_ord']){
                 case 'nf':
-                    $f_ord = 'ASC';
-                    break;
-                case 'of':
                     $f_ord = 'DESC';
                     break;
-                default:
+                case 'of':
                     $f_ord = 'ASC';
+                    break;
+                default:
+                    $f_ord = 'DESC';
                     break;
             }
         } else {
