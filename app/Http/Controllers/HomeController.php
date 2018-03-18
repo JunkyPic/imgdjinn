@@ -14,16 +14,6 @@ class HomeController extends Controller
 {
     const PAGINATE = 12;
 
-    //  <select class="form-control" name="f_ord">
-    //  <option value="nf">Newest first</option>
-    //  <option value="of">Oldest first</option>
-    //  </select>
-    //  <select class="form-control" name="f_nsfw">
-    //  <option value="nn">No NSFW</option>
-    //  <option value="mi">Mixed</option>
-    //  <option value="ns">Only NSFW</option>
-    //  </select>
-
     public function home(Request $request) {
         $filters = $request->query->all();
 
@@ -40,7 +30,7 @@ class HomeController extends Controller
                     break;
             }
         } else {
-            $f_ord = 'ASC';
+            $f_ord = 'DESC';
         }
 
         if(isset($filters['f_nsfw'])){
