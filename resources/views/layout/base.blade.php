@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="An image upload site focused on privacy and data retention"/>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    @yield('csrf')
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link href="{{ asset('css/slate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/css.css') }}" rel="stylesheet">

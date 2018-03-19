@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ImageControllerDeleteImagePost;
 use App\Models\Album;
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -14,42 +13,50 @@ use Illuminate\Http\Request;
  */
 class ImageController extends Controller
 {
-    /**
-     * @param                                $imageAlias
-     * @param ImageControllerDeleteImagePost $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function userPostImageDelete($imageAlias, ImageControllerDeleteImagePost $request) {
-        $image = Image::where(['alias' => $imageAlias])->first();
+    public function userPostImageDelete(Request $request) {
+        $images = Image::whereIn('alias', ($request->request->get('aliases')))->get();
 
-        if(null === $image) {
-            return redirect()->back()->with('error', 'Image not found');
+        if(null === $images) {
+            return [
+                'error' => 'Record not found',
+            ];
         }
 
-        if($image->user_id != \Auth::user()->id) {
-            return redirect()->back()->with('error', 'Image not associated with current user');
-        }
+        $userId = \Auth::user()->id;
+        $albumIds = [];
 
-        // Check for album too
-        if(null !== $image->album_id) {
-            // Get the album and count total photos in it
-            $album = Album::where(['id' => $image->album_id])->with('images')->first();
-        }
-
-        if(\File::exists(\Config::get('image.path.upload') . $image->path)) {
-            if(isset($album) && $album->images()->count() == 1) {
-                // remove the album too since this is the last image
-                $album->delete();
+        foreach($images as $image) {
+            if($image->user_id != $userId) {
+                return [
+                    'error' => 'Image not associated with current user',
+                ];
             }
 
-            $image->delete();
-            \File::delete(\Config::get('image.path.upload') . $image->path);
-
-            return redirect()->back()->with('success', 'Image successfully deleted');
+            $albumIds[] = $image->id;
         }
 
-        return redirect()->back()->with('error', 'Something went wrong. Not sure what tho...Try again later maybe?');
+        $deletedImages = [];
+
+        foreach($images as $image) {
+            if(\File::exists(\Config::get('image.path.upload') . $image->path)) {
+                if(in_array($image->id, $albumIds) && isset($albums)) {
+
+                    $album = Album::where(['id' => $image->album_id])->with('images')->get();
+                    if($albums->images()->count() == 1) {
+                        // remove the album too since this is the last image
+                        $album->delete();
+                    }
+                }
+                $deletedImages[] = $image->alias;
+                $image->delete();
+                \File::delete(\Config::get('image.path.upload') . $image->path);
+            }
+        }
+
+        return [
+            'success' => true,
+            'ids' => $deletedImages,
+        ];
     }
 
     /**
