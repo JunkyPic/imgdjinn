@@ -15,7 +15,9 @@ $(document).ready( function () {
             image_delete_btn_delete = 0;
             $(this).html('Delete');
             $(this).removeClass('btn-success').addClass('btn-danger');
-            deleteImages(iId, route);
+            if(iId.length) {
+                deleteImages(iId, route);
+            }
         }
     });
 
