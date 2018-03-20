@@ -41,6 +41,9 @@
                 <div class="col-lg-2 splitter">
                     <button type="submit" id="image__delete_btn" class="btn btn-danger btn-lg btn-block" value="0">Delete</button>
                 </div>
+                <div class="col-lg-2 splitter">
+                    <button id="image__cancel_btn" class="btn btn-info btn-lg btn-block">Cancel</button>
+                </div>
             </div>
             <div id="image__delete">
                 @foreach($images->chunk(3) as $chunk)

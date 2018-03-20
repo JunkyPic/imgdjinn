@@ -41,6 +41,9 @@
             <div class="col-lg-2 splitter">
                 <button type="submit" id="album__delete_btn" class="btn btn-danger btn-lg btn-block" value="0">Delete</button>
             </div>
+            <div class="col-lg-2 splitter">
+                <button id="album__cancel_btn" class="btn btn-info btn-lg btn-block">Cancel</button>
+            </div>
         </div>
 
         <div id="album__delete">

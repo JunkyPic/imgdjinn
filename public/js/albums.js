@@ -3,6 +3,28 @@ $(document).ready( function () {
     var album_delete_btn_delete = 0;
     var route = $('#album__delete_route').val();
 
+    $('#album__cancel_btn').on('click', function () {
+        iId = [];
+
+        var target = $('#album__delete_btn');
+        if($('#album__delete').hasClass('img-d-black-border')) {
+            $('#album__delete').removeClass('img-d-black-border')
+        }
+
+        var album_select =  $('.album__select');
+
+        if(album_select.find('img').hasClass('img-d-black-border')) {
+            album_select.find('img').removeClass('img-d-black-border');
+        }
+
+        if(target.hasClass('btn-success')) {
+            album_delete_btn_delete = 0;
+            target.html('Delete');
+            target.removeClass('btn-success').addClass('btn-danger');
+        }
+    });
+    
+    
     $('#album__delete_btn').on('click', function () {
 
         $('#album__delete').toggleClass('img-d-black-border');

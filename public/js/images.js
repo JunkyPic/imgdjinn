@@ -3,6 +3,28 @@ $(document).ready( function () {
     var image_delete_btn_delete = 0;
     var route = $('#image__delete_route').val();
 
+
+    $('#image__cancel_btn').on('click', function () {
+        iId = [];
+
+        var target = $('#image__delete_btn');
+        if($('#image__delete').hasClass('img-d-black-border')) {
+            $('#image__delete').removeClass('img-d-black-border')
+        }
+
+        var image_select =  $('.image__select');
+
+        if(image_select.find('img').hasClass('img-d-black-border')) {
+            image_select.find('img').removeClass('img-d-black-border');
+        }
+
+        if(target.hasClass('btn-success')) {
+            image_delete_btn_delete = 0;
+            target.html('Delete');
+            target.removeClass('btn-success').addClass('btn-danger');
+        }
+    });
+
     $('#image__delete_btn').on('click', function () {
 
         $('#image__delete').toggleClass('img-d-black-border');
