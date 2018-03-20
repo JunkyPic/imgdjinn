@@ -10,7 +10,6 @@
 
 @section('content')
     <div class="col-lg-12">
-
         @if(Session::has('error'))
             <div class="row">
                 <div class="col-lg-12 text-center">

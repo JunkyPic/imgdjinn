@@ -1,7 +1,9 @@
 document.getElementById('delete-album-div').style.display ='none';
 document.getElementById('tokenForm').style.display ='none';
 document.getElementById('passwordForm').style.display ='none';
-document.getElementById('btn').style.display ='block';
+if(document.getElementById('btn')) {
+    document.getElementById('btn').style.display ='block';
+}
 
 function toggleShow() {
     var div = document.getElementById('delete-album-div');

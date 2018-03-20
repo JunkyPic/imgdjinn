@@ -23,9 +23,10 @@ Route::get('me', 'ProfileController@getProfile')
   ->name('getProfile')
   ->middleware('cauth');
 
-Route::post('u/a/delete/{alias}', 'AlbumController@userPostAlbumDelete')
+Route::post('u/a/delete', 'AlbumController@userPostAlbumDelete')
     ->name('userPostAlbumDelete')
     ->middleware('cauth');
+
 Route::post('u/i/delete/', 'ImageController@userPostImageDelete')
     ->name('userPostImageDelete')
     ->middleware('cauth');

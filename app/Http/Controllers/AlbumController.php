@@ -13,40 +13,49 @@ use Illuminate\Http\Request;
  */
 class AlbumController extends Controller
 {
-    /**
-     * @param                                $albumAlias
-     * @param AlbumControllerDeleteAlbumPost $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function userPostAlbumDelete($albumAlias, AlbumControllerDeleteAlbumPost $request){
-        $album = Album::where(['alias' => $albumAlias])->with('images')->first();
 
-        if(null === $album) {
-            return redirect()->back()->with('error', 'Album not found');
+    public function userPostAlbumDelete(Request $request){
+        $albums = Album::whereIn('alias', ($request->request->get('aliases')))->with('images')->get();
+
+        if(null === $albums) {
+            return [
+                'error' => 'Record not found',
+            ];
         }
 
-        if($album->user_id != \Auth::user()->id) {
-            return redirect()->back()->with('error', 'Album not associated with current user');
-        }
+        $userId = \Auth::user()->id;
+        $albumAliases = [];
 
-        foreach ($album->images()->get() as $image) {
-            if(\File::exists(\Config::get('image.path.upload') . $image->path)) {
-                $image->delete();
-                \File::delete(\Config::get('image.path.upload') . $image->path);
+        foreach($albums as $album) {
+            if($album->user_id != $userId) {
+                return [
+                    'error' => 'Image not associated with current user',
+                ];
             }
+
+            $albumAliases[] = $album->alias;
         }
 
-        $album->delete();
-        return redirect()->back()->with('success', 'Album successfully deleted');
-
+        foreach ($albums as $item) {
+            foreach($item->images()->get() as $image) {
+                if(\File::exists(\Config::get('image.path.upload') . $image->path)) {
+                    $image->delete();
+                    \File::delete(\Config::get('image.path.upload') . $image->path);
+                }
+            }
+            $item->delete();
+        }
+        return [
+            'success' => true,
+            'ids' => $albumAliases,
+        ];
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getAlbumsUser() {
-        $albums = Album::where(['user_id' => \Auth::user()->id])->orderBy('created_at', 'desc')->paginate(6);
+        $albums = Album::where(['user_id' => \Auth::user()->id])->orderBy('created_at', 'desc')->paginate(12);
         return view('user.albums')->with(['albums' => $albums]);
     }
 
